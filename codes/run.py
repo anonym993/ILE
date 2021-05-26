@@ -285,7 +285,7 @@ def main(args):
         true_conclusions = []
         for h,r,t in new_triple:
             head, relation, tail = entity_embedding[h], relation_embedding[r], entity_embedding[t]
-            if ComplEx_score(head, relation, tail)>0.99:
+            if torch.sigmoid(ComplEx_score(head, relation, tail))>0.99:
                 true_conclusions.append((h,r,t))
         return true_conclusions
 
